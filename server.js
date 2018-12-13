@@ -3,7 +3,7 @@ var app = express()
 
 app.use(express.static('./dist'))
 
-app.get('/', function (req, res) {
+app.get('/', function(req, res) {
   res.send('Hello Vue')
 })
 

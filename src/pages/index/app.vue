@@ -33,6 +33,31 @@ export default {
       msg: 'Use Vue 2.0 Today!'
     }
   },
+  created() {
+    console.log('hhhhh');
+    let p = new Promise((resolve, reject) => {
+      console.log('ok')
+      resolve('ok1111')
+    })
+    setInterval(() => {
+      p.then(msg => {
+        console.log(msg)
+      })
+      this.now = new Date()
+    }, 2000)
+
+    const sleep = (timeout) => {
+      return new Promise((resolve, reject) => {
+        setTimeout(resolve, timeout)
+      })
+    }
+
+    (async () => {
+      console.time('async')
+      await sleep(3000)
+      console.timeEnd('async')
+    })()
+  },
   methods: {
     gogogo() {
       location.assign('../customer/home.html')
