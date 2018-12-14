@@ -17,7 +17,7 @@ export default {
   },
 
   methods: {
-    startHacking() {
+    startHacking() {;
       this.$notify({
         title: 'It Works',
         message:

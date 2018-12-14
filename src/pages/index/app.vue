@@ -34,8 +34,8 @@ export default {
     }
   },
   created() {
-    console.log('hhhhh');
-    let p = new Promise((resolve, reject) => {
+    console.log('hhhhh')
+    let p = new Promise((resolve, ) => {
       console.log('ok')
       resolve('ok1111')
     })
@@ -46,13 +46,12 @@ export default {
       this.now = new Date()
     }, 2000)
 
-    const sleep = (timeout) => {
-      return new Promise((resolve, reject) => {
+    const sleep = timeout => {
+      return new Promise((resolve,) => {
         setTimeout(resolve, timeout)
       })
     }
-
-    (async () => {
+    ;(async () => {
       console.time('async')
       await sleep(3000)
       console.timeEnd('async')
