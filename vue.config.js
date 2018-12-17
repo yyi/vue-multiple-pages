@@ -13,6 +13,7 @@ glob.sync('./src/pages/**/app.js').forEach(path => {
 })
 module.exports = {
   pages,
+  css:{extract:true,},
   outputDir: 'dist',
   chainWebpack: config => config.plugins.delete('named-chunks'),
   devServer: {

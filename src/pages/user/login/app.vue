@@ -19,13 +19,16 @@
 </template>
 
 <script>
+import image from '../../../assets/logo.png'
+
 export default {
   data() {
     return {
       ruleForm: {
         phone: '',
         password: ''
-      }
+      },
+      logo: image
     }
   },
 
