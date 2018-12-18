@@ -13,7 +13,28 @@ glob.sync('./src/pages/**/app.js').forEach(path => {
 })
 module.exports = {
   pages,
-  css: { extract: true },
+  // css: {
+  //     extract: true,
+  //     modules:false,
+  //     loaderOptions: {
+  //         css: {
+  //             modules:false,
+  //             rules: [{
+  //                 test: /\.(woff|woff2|eot|ttf|svg)$/,
+  //                 loader: 'url-loader',
+  //                 options: {
+  //
+  //                     outputPath: '/fonts/',
+  //                     name: '[name].[ext]?[hash]',
+  //                 }
+  //             }]
+  //         }
+  //     }
+  //
+  // },
+    css: {
+        modules: false,
+    },
   outputDir: 'dist',
   chainWebpack: config => config.plugins.delete('named-chunks'),
   devServer: {
