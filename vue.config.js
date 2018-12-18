@@ -1,12 +1,24 @@
 'use strict'
 const titles = require('./title.js')
 const glob = require('glob')
+const fs = require('fs')
 const pages = {}
 glob.sync('./src/pages/**/app.js').forEach(path => {
   const chunk = path.split('./src/pages/')[1].split('/app.js')[0]
+
+  let templatePath = path.replace(
+    /app.js/,
+    chunk.lastIndexOf('/') === -1
+      ? chunk
+      : chunk.substring(chunk.lastIndexOf('/') + 1) + '.html'
+  )
+  console.log(templatePath)
+
+  let template = fsExistsSync(templatePath) ? templatePath : 'public/index.html'
+  console.log(template)
   pages[chunk] = {
     entry: path,
-    template: 'public/index.html',
+    template: template,
     title: titles[chunk],
     chunks: ['chunk-vendors', 'chunk-common', chunk]
   }
@@ -32,9 +44,9 @@ module.exports = {
   //     }
   //
   // },
-    css: {
-        modules: false,
-    },
+  css: {
+    modules: false
+  },
   outputDir: 'dist',
   chainWebpack: config => config.plugins.delete('named-chunks'),
   devServer: {
@@ -46,4 +58,12 @@ module.exports = {
       }
     }
   }
+}
+function fsExistsSync(path) {
+  try {
+    fs.accessSync(path, fs.F_OK)
+  } catch (e) {
+    return false
+  }
+  return true
 }
