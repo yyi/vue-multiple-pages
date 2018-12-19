@@ -12,10 +12,7 @@ glob.sync('./src/pages/**/app.js').forEach(path => {
       ? chunk
       : chunk.substring(chunk.lastIndexOf('/') + 1) + '.html'
   )
-  console.log(templatePath)
-
   let template = fsExistsSync(templatePath) ? templatePath : 'public/index.html'
-  console.log(template)
   pages[chunk] = {
     entry: path,
     template: template,
