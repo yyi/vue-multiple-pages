@@ -10,6 +10,7 @@ let vm1 = new Vue({
   render: h => h(App)
 })
 setTimeout(() => {
-  let vm2 = new Vue(App).$mount('#app2').login()
+  // let vm2 = new Vue(App).$mount('#app2').login()
+  let vm2 = new Vue(App).$mount('#app2')
   console.log(vm1 !== vm2)
 }, 5000)

@@ -57,6 +57,7 @@ export default {
       await sleep(3000)
       console.timeEnd('async')
     })()
+    console.log('create end')
   },
   methods: {
     gogogo() {
