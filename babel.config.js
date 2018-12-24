@@ -3,7 +3,12 @@ module.exports = {
     [
       '@vue/app',
       {
-        polyfills: ['es6.promise', 'es6.symbol']
+        polyfills: [
+          'es6.promise',
+          'es6.symbol',
+          'es6.array.iterator',
+          'es7.promise.finally'
+        ]
       }
     ]
   ]

@@ -13,11 +13,11 @@
     </div>
 </template>
 <script>
-    export default {
-        computed: {
-            cartList () {
-                return this.$store.state.cartList;
-            }
-        }
+export default {
+  computed: {
+    cartList() {
+      return this.$store.state.cartList
     }
+  }
+}
 </script>

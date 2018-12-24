@@ -18,6 +18,7 @@
             </ul>
             <el-button type="primary" @click="gogogo">To Customer Home Page</el-button>
             <el-button type="primary" plain @click="tototo">To User Login Page</el-button>
+            <el-button type="primary" plain @click="gotoshop">go to shop</el-button>
         </el-card>
     </div>
 </template>
@@ -65,6 +66,9 @@ export default {
     },
     tototo() {
       location.assign('../user/login.html')
+    },
+    gotoshop() {
+      location.assign('/shop.html')
     }
   }
 }
