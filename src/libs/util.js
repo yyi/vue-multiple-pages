@@ -16,6 +16,7 @@ Util.ajax.interceptors.response.use(res => {
 const defualtConfig = {
   errorHandle(error, vue) {
     console.log(error)
+    console.log(vue)
     if (vue)
       vue.$alert('系统开小差', '提示', {
         type: 'error'
@@ -28,7 +29,11 @@ Util.get = (
   vue,
   url,
   callback,
-  { errorHandle, param, timeout } = defualtConfig
+  {
+    errorHandle = defualtConfig.errorHandle,
+    param = defualtConfig.param,
+    timeout = defualtConfig.timeout
+  } = defualtConfig
 ) => {
   Util.ajax
     .get(url, {
