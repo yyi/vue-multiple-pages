@@ -4,7 +4,8 @@ const glob = require('glob')
 const fs = require('fs')
 const pages = {}
 glob.sync('./src/pages/**/app.js').forEach(path => {
-  const chunk = path.split('./src/pages/')[1].split('/app.js')[0]
+  let chunk = path.split('./src/pages/')[1].split('/app.js')[0]
+
   let templatePath = path.replace(
     /app.js/,
     (chunk.lastIndexOf('/') === -1
@@ -12,6 +13,12 @@ glob.sync('./src/pages/**/app.js').forEach(path => {
       : chunk.substring(chunk.lastIndexOf('/') + 1)) + '.html'
   )
   let template = fsExistsSync(templatePath) ? templatePath : 'public/index.html'
+  let htmlFileName = template.substring(
+    template.lastIndexOf('/'),
+    template.lastIndexOf('.')
+  )
+  chunk = chunk !== 'app.js' ? chunk + htmlFileName : 'index'
+  console.log(chunk)
   pages[chunk] = {
     entry: path,
     template: template,

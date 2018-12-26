@@ -39,7 +39,7 @@ export default {
 
   methods: {
     login() {
-      location.assign('../index.html')
+      location.assign('/')
     }
   }
 }
