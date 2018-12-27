@@ -1,4 +1,22 @@
 {
+  "useradd": {
+    "data": {
+      "loginName": "Sarah",
+      "passwd": "11111111",
+      "userConfirmedPassword": "11111111",
+      "name": "东方大道",
+      "userDept": "",
+      "userRoles": "test,ITExpert,orgAdmin,超级管理员",
+      "roleIds": [
+        143,
+        186,
+        2,
+        1
+      ]
+    },
+    "params": {},
+    "timeout": 30000
+  },
   "user": {
     "content": [
       {

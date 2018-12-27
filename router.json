@@ -1,7 +1,7 @@
 {
   "/api/*": "/$1",
   "/rest/user/list": "/user",
-  "/rest/user/create": "/user",
+  "/rest/user/create": "/useradd",
   "/rest/role/list\\?order=:asc": "/roles",
   "/posts/:category": "/posts?category=:category",
   "/articles\\?id=:id": "/posts/:id"
