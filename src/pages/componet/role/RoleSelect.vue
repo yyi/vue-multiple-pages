@@ -4,6 +4,7 @@
             title="选择角色"
             :close-on-click-modal="false"
             :visible.sync="showDialog"
+            @open="showSelectedRoles"
             append-to-body>
 
         <el-table border stripe class="table-width" @row-click="clickRow" ref="rolesTable" :data="rolesData"
@@ -18,7 +19,7 @@
 
         <div slot="footer" class="dialog-footer">
             <el-button @click="showDialog = false">取 消</el-button>
-            <el-button type="primary" @click="showDialog = false">确认</el-button>
+            <el-button type="primary" @click="confirm()">确认</el-button>
         </div>
     </el-dialog>
 </template>
@@ -31,6 +32,10 @@ export default {
     isShow: {
       type: Boolean,
       default: false
+    },
+    defaultSelected: {
+      type: Array,
+      default: () => []
     }
   },
   data() {
@@ -52,10 +57,23 @@ export default {
     handleRolesSelectionChange(val) {
       this.multipleRolesSelection = val
       console.log(this.multipleRolesSelection)
+    },
+    confirm() {
+      this.showDialog = false
+      this.$emit('selected-roles', this.multipleRolesSelection)
+    },
+    showSelectedRoles() {
+      //解决异步延迟加载导致dom未渲染报错
+      this.$nextTick(() => {
+        this.$refs.rolesTable.clearSelection()
+        this.rolesData
+          .filter(role => this.defaultSelected.includes(role['id']))
+          .forEach(row => this.$refs.rolesTable.toggleRowSelection(row), true)
+      })
     }
   },
   watch: {
-      isShow() {
+    isShow() {
       this.showDialog = true
     }
   },

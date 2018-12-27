@@ -13,7 +13,7 @@ Util.ajax = axios.create({
 Util.ajax.interceptors.response.use(res => {
   return res.data
 })
-const defualtConfig = {
+const defaultConfig = {
   errorHandle(error, vue) {
     console.log(error)
     console.log(vue)
@@ -30,10 +30,10 @@ Util.get = (
   url,
   callback,
   {
-    errorHandle = defualtConfig.errorHandle,
-    param = defualtConfig.param,
-    timeout = defualtConfig.timeout
-  } = defualtConfig
+    errorHandle = defaultConfig.errorHandle,
+    param = defaultConfig.param,
+    timeout = defaultConfig.timeout
+  } = defaultConfig
 ) => {
   Util.ajax
     .get(url, {
@@ -44,6 +44,34 @@ Util.get = (
     .catch(error => {
       if (errorHandle) errorHandle(error, vue)
     })
+}
+
+const map = new Map()
+
+Util.post = (
+  vue,
+  url,
+  data = {},
+  callback,
+  {
+    errorHandle = defaultConfig.errorHandle,
+    param = defaultConfig.param,
+    timeout = defaultConfig.timeout
+  } = defaultConfig
+) => {
+  if (map.get(url)) return
+  map.set(url, true)
+  Util.ajax
+    .post(url, {
+      data: data,
+      params: param,
+      timeout: timeout
+    })
+    .then(res => callback(res))
+    .catch(error => {
+      if (errorHandle) errorHandle(error, vue)
+    })
+    .finally(() => map.set(url, false))
 }
 
 export default Util

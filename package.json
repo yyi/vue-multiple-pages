@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service  --open serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "mock": "json-server --watch user.json --routes router.json"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -21,6 +22,7 @@
     "@vue/cli-plugin-eslint": "^3.0.1",
     "@vue/cli-service": "^3.0.1",
     "@vue/eslint-config-prettier": "^3.0.1",
+    "babel-plugin-transform-remove-console": "^6.9.4",
     "less": "^3.0.4",
     "less-loader": "^4.1.0",
     "node-sass": "^4.11.0",
