@@ -1,20 +1,244 @@
 {
   "user": {
-    "data": {
-      "loginName": "test",
-      "passwd": "111111111",
-      "userConfirmedPassword": "111111111",
-      "name": "13221",
-      "userDept": "",
-      "userRoles": "超级管理员,test,ITExpert",
-      "roleIds": [
-        1,
-        143,
-        186
-      ]
+    "content": [
+      {
+        "id": 1,
+        "loginName": "admin",
+        "name": "系统管理员",
+        "passwd": "171e340a0c3956c6bda6f9df6fb7b205",
+        "createTime": "2017-07-07T05:06:59.000+0000",
+        "roles": [
+          {
+            "id": 1,
+            "name": "超级管理员",
+            "description": "超级管理员",
+            "status": "AVAILIABLE",
+            "resourceIds": []
+          },
+          {
+            "id": 2,
+            "name": "orgAdmin",
+            "description": "部门管理员",
+            "status": "AVAILIABLE",
+            "resourceIds": []
+          },
+          {
+            "id": 4505,
+            "name": "test",
+            "description": "1",
+            "status": "AVAILIABLE",
+            "resourceIds": []
+          },
+          {
+            "id": 143,
+            "name": "test",
+            "description": "测试角色",
+            "status": "AVAILIABLE",
+            "resourceIds": []
+          }
+        ],
+        "organizations": [
+          {
+            "id": 1,
+            "parentId": null,
+            "name": "方正证券",
+            "status": "AVAILIABLE",
+            "organizationNo": "9900",
+            "organizationType": "A",
+            "organizationLevel": "FirstClass",
+            "organizationOrder": null,
+            "address": "123",
+            "zipCode": "410000",
+            "subOrganization": []
+          },
+          {
+            "id": 204,
+            "parentId": 1,
+            "name": "方正分支机构",
+            "status": "AVAILIABLE",
+            "organizationNo": "D50-10",
+            "organizationType": "A",
+            "organizationLevel": "BranchCompany",
+            "organizationOrder": null,
+            "address": " ",
+            "zipCode": "000000",
+            "subOrganization": []
+          },
+          {
+            "id": 181,
+            "parentId": 204,
+            "name": "北京阜外大街证券营业部",
+            "status": "AVAILIABLE",
+            "organizationNo": "D50-1025",
+            "organizationType": "A",
+            "organizationLevel": "FirstClass",
+            "organizationOrder": null,
+            "address": null,
+            "zipCode": null,
+            "subOrganization": []
+          },
+          {
+            "id": 215,
+            "parentId": 1,
+            "name": "民族证券",
+            "status": "AVAILIABLE",
+            "organizationNo": "3333",
+            "organizationType": "A",
+            "organizationLevel": "BranchCompany",
+            "organizationOrder": null,
+            "address": null,
+            "zipCode": null,
+            "subOrganization": []
+          },
+          {
+            "id": 205,
+            "parentId": 1,
+            "name": "方正总部",
+            "status": "AVAILIABLE",
+            "organizationNo": "D50-00",
+            "organizationType": "A",
+            "organizationLevel": "BranchCompany",
+            "organizationOrder": null,
+            "address": "华侨国际",
+            "zipCode": "410000",
+            "subOrganization": []
+          }
+        ],
+        "roleIds": null,
+        "organizationIds": null,
+        "organizationNoList": null,
+        "organizationIdList": null
+      },
+      {
+        "id": 52661,
+        "loginName": "yangyi",
+        "name": "杨翊",
+        "passwd": "5effca8225302edaba16fe9a45a37b28",
+        "createTime": "2017-12-27T06:29:56.000+0000",
+        "roles": [
+          {
+            "id": 1,
+            "name": "超级管理员",
+            "description": "超级管理员",
+            "status": "AVAILIABLE",
+            "resourceIds": []
+          }
+        ],
+        "organizations": [
+          {
+            "id": 367,
+            "parentId": 215,
+            "name": "民族总部",
+            "status": "AVAILIABLE",
+            "organizationNo": "3333-01",
+            "organizationType": "A",
+            "organizationLevel": "BranchCompany",
+            "organizationOrder": null,
+            "address": null,
+            "zipCode": null,
+            "subOrganization": []
+          },
+          {
+            "id": 205,
+            "parentId": 1,
+            "name": "方正总部",
+            "status": "AVAILIABLE",
+            "organizationNo": "D50-00",
+            "organizationType": "A",
+            "organizationLevel": "BranchCompany",
+            "organizationOrder": null,
+            "address": "华侨国际",
+            "zipCode": "410000",
+            "subOrganization": []
+          }
+        ],
+        "roleIds": null,
+        "organizationIds": null,
+        "organizationNoList": null,
+        "organizationIdList": null
+      },
+      {
+        "id": 54703,
+        "loginName": "test",
+        "name": "test",
+        "passwd": "d6f5eb99fb351067a7716651a38afc3f",
+        "createTime": "2018-08-31T07:01:09.000+0000",
+        "roles": [
+          {
+            "id": 1,
+            "name": "超级管理员",
+            "description": "超级管理员",
+            "status": "AVAILIABLE",
+            "resourceIds": []
+          },
+          {
+            "id": 186,
+            "name": "ITExpert",
+            "description": "信息技术专员",
+            "status": "AVAILIABLE",
+            "resourceIds": []
+          },
+          {
+            "id": 6655,
+            "name": "test2",
+            "description": "11",
+            "status": "AVAILIABLE",
+            "resourceIds": []
+          },
+          {
+            "id": 143,
+            "name": "test",
+            "description": "测试角色",
+            "status": "AVAILIABLE",
+            "resourceIds": []
+          }
+        ],
+        "organizations": [
+          {
+            "id": 205,
+            "parentId": 1,
+            "name": "方正总部",
+            "status": "AVAILIABLE",
+            "organizationNo": "D50-00",
+            "organizationType": "A",
+            "organizationLevel": "BranchCompany",
+            "organizationOrder": null,
+            "address": "华侨国际",
+            "zipCode": "410000",
+            "subOrganization": []
+          }
+        ],
+        "roleIds": null,
+        "organizationIds": null,
+        "organizationNoList": null,
+        "organizationIdList": null
+      }
+    ],
+    "pageable": {
+      "sort": {
+        "sorted": false,
+        "unsorted": true,
+        "empty": true
+      },
+      "offset": 0,
+      "pageNumber": 0,
+      "pageSize": 10,
+      "paged": true,
+      "unpaged": false
     },
-    "params": {},
-    "timeout": 30000
+    "last": true,
+    "totalPages": 1,
+    "totalElements": 3,
+    "size": 10,
+    "number": 0,
+    "sort": {
+      "sorted": false,
+      "unsorted": true,
+      "empty": true
+    },
+    "numberOfElements": 3,
+    "first": true,
+    "empty": false
   },
   "roles": [
     {
