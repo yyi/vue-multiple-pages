@@ -1,21 +1,19 @@
 {
   "useradd": {
-    "data": {
-      "loginName": "Sarah",
-      "passwd": "11111111",
-      "userConfirmedPassword": "11111111",
-      "name": "东方大道",
-      "userDept": "",
-      "userRoles": "test,ITExpert,orgAdmin,超级管理员",
-      "roleIds": [
-        143,
-        186,
-        2,
-        1
-      ]
-    },
-    "params": {},
-    "timeout": 30000
+    "loginName": "dfdf",
+    "passwd": "11111111",
+    "userConfirmedPassword": "11111111",
+    "name": "大多数",
+    "userDept": "",
+    "userRoles": "test2,test,ITExpert,超级管理员,orgAdmin,test",
+    "roleIds": [
+      6655,
+      143,
+      186,
+      1,
+      2,
+      4505
+    ]
   },
   "user": {
     "content": [

@@ -27,6 +27,9 @@ glob.sync('./src/pages/**/app.js').forEach(path => {
   }
 })
 module.exports = {
+  baseUrl: process.env.NODE_ENV === 'production' ? '/spa/' : '/',
+  outputDir: 'spa',
+  assetsDir: 'assets',
   pages,
   // css: {
   //     extract: true,
@@ -50,8 +53,16 @@ module.exports = {
   css: {
     modules: false
   },
-  outputDir: 'dist',
-  chainWebpack: config => config.plugins.delete('named-chunks'),
+  chainWebpack: config => {
+    config.plugin('define').tap(args => {
+      args[0] = {
+        ...args[0],
+        MY_API_URL: JSON.stringify(process.env.URL)
+      }
+      return args
+    })
+    config.plugins.delete('named-chunks')
+  },
   devServer: {
     proxy: {
       '/api': {

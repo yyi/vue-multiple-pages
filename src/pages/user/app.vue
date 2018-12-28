@@ -190,8 +190,7 @@ export default {
           { validator: confirmPassword, trigger: ['blur', 'change'] }
         ]
       },
-      selectedRoles: [],
-      selectedRolesArray: []
+      selectedRoles: []
     }
   },
   methods: {
@@ -228,15 +227,17 @@ export default {
     showUserAddModal() {
       this.addModalShow = true
       this.$nextTick(() => this.$refs.addForm.resetFields())
+      this.selectedRoles = []
+      this.addForm.userRoles = ''
     },
     submitAddForm(form) {
       this.$refs[form].validate(valid => {
         if (valid) {
           this.addForm['roleIds'] = this.selectedRoles.map(role => role['id'])
-          $.post(this, '/rest/user/create', this.addForm, () =>
+          $.post(this, '/rest/user/create', this.addForm, () => {
             this.$alert('保存成功')
-          )
-          this.addModalShow = false
+            this.addModalShow = false
+          })
         } else {
           console.log('error submit!!')
           return false

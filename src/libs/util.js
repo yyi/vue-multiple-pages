@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const Util = {
-  apiPath: 'http://localhost:3000'
+  apiPath: process.env.VUE_APP_API_URL
 }
 
 // Ajax 通用配置
@@ -46,7 +46,7 @@ Util.get = (
     })
 }
 
-const map = new Map()
+const set = new Set()
 
 Util.post = (
   vue,
@@ -59,19 +59,22 @@ Util.post = (
     timeout = defaultConfig.timeout
   } = defaultConfig
 ) => {
-  if (map.get(url)) return
-  map.set(url, true)
-  Util.ajax
-    .post(url, {
-      data: data,
-      params: param,
-      timeout: timeout
-    })
+  let token = `${url}:${JSON.stringify(data)}`
+  console.log(token)
+  if (set.has(token)) return
+  set.add(token)
+  Util.ajax({
+    method: 'post',
+    url: url,
+    data: data,
+    params: param,
+    timeout: timeout
+  })
     .then(res => callback(res))
     .catch(error => {
       if (errorHandle) errorHandle(error, vue)
     })
-    .finally(() => map.set(url, false))
+    .finally(() => set.delete(token))
 }
 
 export default Util
