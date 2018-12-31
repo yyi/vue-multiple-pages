@@ -25,6 +25,11 @@ const defaultConfig = {
   param: {},
   timeout: 30000
 }
+
+function isFunction(callback) {
+  return typeof callback === 'function'
+}
+
 Util.get = (
   vue,
   url,
@@ -35,12 +40,15 @@ Util.get = (
     timeout = defaultConfig.timeout
   } = defaultConfig
 ) => {
-  Util.ajax
+  return Util.ajax
     .get(url, {
       params: param,
       timeout: timeout
     })
-    .then(res => callback(res))
+    .then(res => {
+      if (isFunction(callback)) return callback(res)
+      return res
+    })
     .catch(error => {
       if (errorHandle) errorHandle(error, vue)
     })
@@ -63,14 +71,17 @@ Util.post = (
   console.log(token)
   if (set.has(token)) return
   set.add(token)
-  Util.ajax({
+  return Util.ajax({
     method: 'post',
     url: url,
     data: data,
     params: param,
     timeout: timeout
   })
-    .then(res => callback(res))
+    .then(res => {
+      if (isFunction(callback)) return callback(res)
+      return res
+    })
     .catch(error => {
       if (errorHandle) errorHandle(error, vue)
     })

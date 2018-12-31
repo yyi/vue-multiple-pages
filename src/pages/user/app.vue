@@ -209,8 +209,10 @@ export default {
         return transUser
       })
     },
-    getUserList() {
-      $.get(this, '/rest/user/list', res => (this.userData = res['content']))
+    async getUserList() {
+      // $.get(this, '/rest/user/list', res => (this.userData = res['content']))
+      let res = await $.get(this, '/rest/user/list')
+      this.userData = res['content']
     },
     onSelectedRoles(roles) {
       console.log('received selected roles')
@@ -236,8 +238,7 @@ export default {
           this.addForm['roleIds'] = this.selectedRoles.map(role => role['id'])
           $.post(this, '/rest/user/create', this.addForm, () => {
             this.$alert('保存成功')
-            this.addModalShow = false
-          })
+          }).then(() => (this.addModalShow = false))
         } else {
           console.log('error submit!!')
           return false
