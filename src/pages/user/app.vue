@@ -211,8 +211,7 @@ export default {
     },
     async getUserList() {
       // $.get(this, '/rest/user/list', res => (this.userData = res['content']))
-      let res = await $.get(this, '/rest/user/list')
-      this.userData = res['content']
+      this.userData = (await $.get(this, '/rest/user/list'))['content']
     },
     onSelectedRoles(roles) {
       console.log('received selected roles')
