@@ -1,9 +1,9 @@
 {
   "useradd": {
-    "loginName": "dfdf",
-    "passwd": "11111111",
-    "userConfirmedPassword": "11111111",
-    "name": "大多数",
+    "loginName": "dsds",
+    "passwd": "ssssssssssss",
+    "userConfirmedPassword": "ssssssssssss",
+    "name": "csdasasa",
     "userDept": "",
     "userRoles": "test2,test,ITExpert,超级管理员,orgAdmin,test",
     "roleIds": [

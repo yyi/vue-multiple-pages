@@ -211,7 +211,7 @@ export default {
     },
     async getUserList() {
       // $.get(this, '/rest/user/list', res => (this.userData = res['content']))
-      this.userData = (await $.get(this, '/rest/user/list'))['content']
+      this.userData = (await this.$fetch('/rest/user/list'))['content']
     },
     onSelectedRoles(roles) {
       console.log('received selected roles')
@@ -235,7 +235,7 @@ export default {
       this.$refs[form].validate(valid => {
         if (valid) {
           this.addForm['roleIds'] = this.selectedRoles.map(role => role['id'])
-          $.post(this, '/rest/user/create', this.addForm, () => {
+          this.$post('/rest/user/create', this.addForm, () => {
             this.$alert('保存成功')
           }).then(() => (this.addModalShow = false))
         } else {

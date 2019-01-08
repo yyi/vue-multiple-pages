@@ -47,7 +47,7 @@ export default {
   },
   methods: {
     getRolesList() {
-      $.get(this, '/rest/role/list', res => (this.rolesData = res), {
+      this.$fetch('/rest/role/list', res => (this.rolesData = res), {
         param: { order: 'asc' }
       })
     },
