@@ -4,18 +4,33 @@ let http = axios.create({
   baseURL: process.env.VUE_APP_API_URL
 })
 
-http.interceptors.response.use(res => {
-  return res.data
-})
+http.interceptors.response.use(
+  res => {
+    return res.data
+  },
+  error => {
+    if (error?.response?.status === 401) {
+      window.location = process.env.VUE_APP_LOGIN_URL
+    } else {
+      return Promise.reject(error)
+    }
+  }
+)
 
 const defaultConfig = {
   errorHandle(error, vue) {
     console.log(error)
     console.log(vue)
-    if (vue)
-      vue.$alert('系统开小差', '提示', {
+    if (vue) {
+      let msg = error?.response?.data?.code
+        ? `,错误码:[${error.response.data.code}],错误描述[${
+            error.response.data.message
+          }].`
+        : `,[${error.message}].`
+      vue.$alert(`系统开小差${msg}`, '提示', {
         type: 'error'
       })
+    }
   },
   param: {},
   timeout: 30000
@@ -25,7 +40,7 @@ function isFunction(callback) {
 }
 const set = new Set()
 
-function callremote(
+function callRemoteByAjax(
   method,
   url,
   data = {},
@@ -41,6 +56,7 @@ function callremote(
     data: data,
     url: url,
     params: param,
+    headers: { 'X-Requested-With': 'XMLHttpRequest' },
     timeout: timeout
   })
     .then(res => {
@@ -53,14 +69,23 @@ function callremote(
 }
 
 export function $get(url, ...args) {
-  return callremote('get', url, {}, ...args)
+  return callRemoteByAjax.call(this, 'get', url, {}, ...args)
 }
 
 export function $post(url, data, ...args) {
   let token = `${url}:${JSON.stringify(data)}`
-  if (set.has(token)) return
+  if (set.has(token)) {
+    this.$message({
+      showClose: true,
+      message: '正在等待服务端响应，请勿重复提交',
+      type: 'warning'
+    })
+    return
+  }
   set.add(token)
-  return callremote('post', url, data, ...args).finally(() => set.delete(token))
+  return callRemoteByAjax
+    .call(this, 'post', url, data, ...args)
+    .finally(() => set.delete(token))
 }
 
 export default {

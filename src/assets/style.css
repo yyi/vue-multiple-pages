@@ -2846,8 +2846,7 @@ a.forum-item-title:hover {
 }
 
 body {
-    font-family:"Microsoft YaHei","微软雅黑", "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 13px;
+    font:16px/1.5 "lucida grande", "lucida sans unicode", lucida, helvetica, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
     color: #676a6c;
     overflow-x: hidden;
     overflow-y:hidden;

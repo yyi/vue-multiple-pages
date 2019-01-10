@@ -129,7 +129,6 @@
 </template>
 
 <script>
-import $ from '../../libs/util'
 import RoleSelect from '../componet/role/RoleSelect'
 
 export default {
@@ -237,7 +236,8 @@ export default {
           this.addForm['roleIds'] = this.selectedRoles.map(role => role['id'])
           this.$post('/rest/user/create', this.addForm, () => {
             this.$alert('保存成功')
-          }).then(() => (this.addModalShow = false))
+            this.addModalShow = false
+          })
         } else {
           console.log('error submit!!')
           return false

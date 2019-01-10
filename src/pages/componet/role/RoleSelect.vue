@@ -25,8 +25,6 @@
 </template>
 
 <script>
-import $ from '../../../libs/util'
-
 export default {
   props: {
     isShow: {
