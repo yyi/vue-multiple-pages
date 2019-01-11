@@ -1,6 +1,6 @@
-const removeConsolePlugin = []
+const babelPlugins = ['@babel/plugin-proposal-optional-chaining']
 if (process.env.NODE_ENV === 'production') {
-  removeConsolePlugin.push('transform-remove-console')
+  babelPlugins.push('transform-remove-console')
 }
 module.exports = {
   presets: [
@@ -16,5 +16,5 @@ module.exports = {
       }
     ]
   ],
-  plugins: [...removeConsolePlugin, '@babel/plugin-proposal-optional-chaining']
+  plugins: babelPlugins
 }

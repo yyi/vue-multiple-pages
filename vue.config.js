@@ -27,7 +27,7 @@ glob.sync('./src/pages/**/app.js').forEach(path => {
   }
 })
 module.exports = {
-  baseUrl: process.env.NODE_ENV === 'production' ? '/spa/' : '/',
+  publicPath: process.env.NODE_ENV === 'production' ? '/spa/' : '/',
   outputDir: 'spa',
   assetsDir: 'assets',
   pages,

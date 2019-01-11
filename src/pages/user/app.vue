@@ -4,7 +4,7 @@
       <el-form :inline="true">
         <el-row :gutter="20">
           <el-col :span="6">
-            <el-form-item label="登录名：">
+            <el-form-item label="登录账号：">
               <el-input
                 placeholder="请输入登录名"
                 v-model="loginName"
@@ -59,7 +59,7 @@
     </div>
     <el-dialog
       title="新增用户"
-      width="30%"
+      width="50%"
       :visible.sync="addModalShow"
       :close-on-click-modal="false"
     >
