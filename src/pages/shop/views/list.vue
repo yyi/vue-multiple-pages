@@ -1,48 +1,70 @@
 <template>
-    <div v-show="list.length">
-        <div class="list-control">
-            <div class="list-control-filter">
-                <span>品牌：</span>
-                <span
-                    class="list-control-filter-item"
-                    :class="{on: item === filterBrand}"
-                    v-for="item in brands"
-                    @click="handleFilterBrand(item)" :key="item">{{ item }}</span>
-            </div>
-            <div class="list-control-filter">
-                <span>颜色：</span>
-                <span
-                    class="list-control-filter-item"
-                    :class="{on: item === filterColor}"
-                    v-for="item in colors"
-                    @click="handleFilterColor(item)" :key="item">{{ item }}</span>
-            </div>
-            <div class="list-control-order">
-                <span>排序：</span>
-                <span
-                    class="list-control-order-item"
-                    :class="{on: order === ''}"
-                    @click="handleOrderDefault">默认</span>
-                <span
-                    class="list-control-order-item"
-                    :class="{on: order === 'sales'}"
-                    @click="handleOrderSales">
-                    销量
-                    <template v-if="order === 'sales'">↓</template>
-                </span>
-                <span
-                    class="list-control-order-item"
-                    :class="{on: order.indexOf('cost') > -1}"
-                    @click="handleOrderCost">
-                    价格
-                    <template v-if="order === 'cost-asc'">↑</template>
-                    <template v-if="order === 'cost-desc'">↓</template>
-                </span>
-            </div>
-        </div>
-        <Product v-for="item in filteredAndOrderedList" :info="item" :key="item.id"></Product>
-        <div class="product-not-found" v-show="!filteredAndOrderedList.length">暂无相关商品</div>
+  <div v-show="list.length">
+    <div class="list-control">
+      <div class="list-control-filter">
+        <span>品牌：</span>
+        <span
+          class="list-control-filter-item"
+          :class="{ on: item === filterBrand }"
+          v-for="item in brands"
+          @click="handleFilterBrand(item)"
+          :key="item"
+          >{{ item }}</span
+        >
+      </div>
+      <div class="list-control-filter">
+        <span>颜色：</span>
+        <span
+          class="list-control-filter-item"
+          :class="{ on: item === filterColor }"
+          v-for="item in colors"
+          @click="handleFilterColor(item)"
+          :key="item"
+          >{{ item }}</span
+        >
+      </div>
+      <div class="list-control-order">
+        <span>排序：</span>
+        <span
+          class="list-control-order-item"
+          :class="{ on: order === '' }"
+          @click="handleOrderDefault"
+          >默认</span
+        >
+        <span
+          class="list-control-order-item"
+          :class="{ on: order === 'sales' }"
+          @click="handleOrderSales"
+        >
+          销量
+          <template v-if="order === 'sales'"
+            >↓</template
+          >
+        </span>
+        <span
+          class="list-control-order-item"
+          :class="{ on: order.indexOf('cost') > -1 }"
+          @click="handleOrderCost"
+        >
+          价格
+          <template v-if="order === 'cost-asc'"
+            >↑</template
+          >
+          <template v-if="order === 'cost-desc'"
+            >↓</template
+          >
+        </span>
+      </div>
     </div>
+    <Product
+      v-for="item in filteredAndOrderedList"
+      :info="item"
+      :key="item.id"
+    ></Product>
+    <div class="product-not-found" v-show="!filteredAndOrderedList.length">
+      暂无相关商品
+    </div>
+  </div>
 </template>
 <script>
 import Product from '../components/product.vue'

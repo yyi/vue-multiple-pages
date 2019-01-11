@@ -5,6 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service --mode development  --open serve",
     "build": "vue-cli-service  --mode production  build",
+    "deploy": "node deploy.js",
+    "build&deploy": "vue-cli-service  --mode production  build && node deploy.js",
     "lint": "vue-cli-service lint",
     "mock": "json-server --watch user.json --routes router.json"
   },
@@ -24,6 +26,7 @@
     "@vue/cli-service": "^3.0.1",
     "@vue/eslint-config-prettier": "^3.0.1",
     "babel-plugin-transform-remove-console": "^6.9.4",
+    "fs-extra": "^7.0.1",
     "less": "^3.0.4",
     "less-loader": "^4.1.0",
     "node-sass": "^4.11.0",

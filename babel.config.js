@@ -16,5 +16,5 @@ module.exports = {
       }
     ]
   ],
-  plugins: [...removeConsolePlugin,"@babel/plugin-proposal-optional-chaining"]
+  plugins: [...removeConsolePlugin, '@babel/plugin-proposal-optional-chaining']
 }

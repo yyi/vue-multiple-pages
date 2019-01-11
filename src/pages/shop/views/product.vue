@@ -1,20 +1,26 @@
 <template>
-    <div v-if="product">
-        <div class="product">
-            <div class="product-image">
-                <img :src="product.image">
-            </div>
-            <div class="product-info">
-                <h1 class="product-name">{{ product.name }}</h1>
-                <div class="product-cost">¥ {{ product.cost }}</div>
-                <div class="product-add-cart" @click="handleAddToCart">加入购物车</div>
-            </div>
-        </div>
-        <div class="product-desc">
-            <h2>产品介绍</h2>
-            <img v-for="n in 9" :src="'http://img.ivsky.com/img/tupian/pre/201711/30/geshigeyangdetoudaishierjitupian-00' + n + '.jpg'" :key="n">
-        </div>
+  <div v-if="product">
+    <div class="product">
+      <div class="product-image"><img :src="product.image" /></div>
+      <div class="product-info">
+        <h1 class="product-name">{{ product.name }}</h1>
+        <div class="product-cost">¥ {{ product.cost }}</div>
+        <div class="product-add-cart" @click="handleAddToCart">加入购物车</div>
+      </div>
     </div>
+    <div class="product-desc">
+      <h2>产品介绍</h2>
+      <img
+        v-for="n in 9"
+        :src="
+          'http://img.ivsky.com/img/tupian/pre/201711/30/geshigeyangdetoudaishierjitupian-00' +
+            n +
+            '.jpg'
+        "
+        :key="n"
+      />
+    </div>
+  </div>
 </template>
 <script>
 import product_data from '../product.js'

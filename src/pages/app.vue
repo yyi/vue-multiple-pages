@@ -1,27 +1,35 @@
 <template>
-    <div id="app">
-        <el-card class="index-card">
-            <div slot="header">
-                {{msg}}
-            </div>
-            <ul>
-                <li>
-                    <a href="https://github.com/Plortinus/vue-multiple-pages" target="_blank">
-                        Vue Multiple Pages
-                    </a>
-                </li>
-                <li>
-                    <a href="https://github.com/Plortinus/element-china-area-data" target="_blank">
-                        Element China Area Data
-                    </a>
-                </li>
-            </ul>
-            <el-button type="primary" @click="gogogo">To Customer Home Page</el-button>
-            <el-button type="primary" plain @click="tototo">To User Login Page</el-button>
-            <el-button type="primary" plain @click="gotoshop">go to shop</el-button>
-            <el-button type="primary" plain @click="gotouser">go to user</el-button>
-        </el-card>
-    </div>
+  <div id="app">
+    <el-card class="index-card">
+      <div slot="header">{{ msg }}</div>
+      <ul>
+        <li>
+          <a
+            href="https://github.com/Plortinus/vue-multiple-pages"
+            target="_blank"
+          >
+            Vue Multiple Pages
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://github.com/Plortinus/element-china-area-data"
+            target="_blank"
+          >
+            Element China Area Data
+          </a>
+        </li>
+      </ul>
+      <el-button type="primary" @click="gogogo"
+        >To Customer Home Page</el-button
+      >
+      <el-button type="primary" plain @click="tototo"
+        >To User Login Page</el-button
+      >
+      <el-button type="primary" plain @click="gotoshop">go to shop</el-button>
+      <el-button type="primary" plain @click="gotouser">go to user</el-button>
+    </el-card>
+  </div>
 </template>
 
 <script>

@@ -1,8 +1,6 @@
 <template>
   <div id="app">
-    <div class="dd">
-      Home
-    </div>
+    <div class="dd">Home</div>
     <el-button @click.native="startHacking">Let's do it</el-button>
   </div>
 </template>

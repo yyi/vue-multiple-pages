@@ -1,131 +1,145 @@
 <template>
-    <div>
-        <div class="border-bottom white-bg page-heading">
-            <el-form :inline="true">
-                <el-row :gutter="20">
-                    <el-col :span="6">
-                        <el-form-item label="登录名：">
-                            <el-input
-                                    placeholder="请输入登录名"
-                                    v-model="loginName"
-                                    clearable></el-input>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="6" class="alignRight">
-                        <el-form-item label="姓名：">
-                            <el-input
-                                    placeholder="请输入用户姓名"
-                                    v-model="userName"
-                                    clearable></el-input>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="12">
-                        <el-button type="primary">查询</el-button>
-                        <el-button type="primary" @click="showUserAddModal()">新增</el-button>
-                    </el-col>
-                </el-row>
-            </el-form>
-        </div>
-        <div>
-            <el-table :data="getTableData()" border stripe :highlight-current-row="true" row-key="id"
-                      class="table-width">
-                <el-table-column
-                        fixed
-                        prop="loginName"
-                        label="登录名"
-                        min-width="15%">
-                </el-table-column>
-                <el-table-column
-                        prop="name"
-                        label="姓名"
-                        min-width="15%">
-                </el-table-column>
-                <el-table-column
-                        prop="organizations.name"
-                        label="部门"
-                        min-width="25%">
-                </el-table-column>
-                <el-table-column
-                        prop="roles.Name"
-                        label="角色"
-                        min-width="25%">
-                </el-table-column>
-                <el-table-column
-                        fixed="right"
-                        label="操作"
-                        min-width="20%">
-                    <template slot-scope="scope">
-                        <el-button @click="handleEdit(scope.row)" type="text" size="small">修改</el-button>
-                        <el-button type="text" size="small">删除</el-button>
-                    </template>
-                </el-table-column>
-            </el-table>
-        </div>
-        <el-dialog title="新增用户" width="30%" :visible.sync="addModalShow" :close-on-click-modal="false">
-
-            <el-form :rules="userRules" :model="addForm" ref="addForm">
-
-                <el-form-item label="登录名：" prop="loginName">
-                    <el-input
-                            placeholder="请输入登录名"
-                            v-model="addForm.loginName"
-                            clearable></el-input>
-                </el-form-item>
-
-                <el-form-item label="密码：" prop="passwd">
-                    <el-input
-                            type="password"
-                            placeholder="请输入密码"
-                            v-model="addForm.passwd"
-                            clearable></el-input>
-                </el-form-item>
-
-                <el-form-item label="确认密码：" prop="userConfirmedPassword">
-                    <el-input
-                            type="password"
-                            placeholder="请输入确认密码"
-                            v-model="addForm.userConfirmedPassword"
-                            clearable></el-input>
-                </el-form-item>
-
-                <el-form-item label="姓名：" prop="name">
-                    <el-input
-                            placeholder="请输入用户姓名"
-                            v-model="addForm.name"
-                            clearable></el-input>
-                </el-form-item>
-
-                <el-form-item label="部门：">
-                    <el-input
-                            placeholder="请选择部门"
-                            v-model="addForm.userDept"
-                            :readonly="true">
-                        <template slot="append">
-                            <el-button size="small">选择</el-button>
-                        </template>
-                    </el-input>
-                </el-form-item>
-                <el-form-item label="角色：">
-                    <el-input
-                            placeholder="请选择角色"
-                            v-model="addForm.userRoles"
-                            :readonly="true">
-                        <template slot="append">
-                            <el-button size="small" @click="roleSelectModalShow=!roleSelectModalShow">选择</el-button>
-                        </template>
-                    </el-input>
-                </el-form-item>
-            </el-form>
-
-            <div slot="footer" class="dialog-footer">
-                <el-button @click="addModalShow = false">取 消</el-button>
-                <el-button type="primary" @click="submitAddForm('addForm')">保存</el-button>
-            </div>
-
-        </el-dialog>
-        <RoleSelect :is-show="roleSelectModalShow" :default-selected="selectedRoles.map(role=>role['id'])"
-                    @selected-roles="onSelectedRoles"></RoleSelect>
+  <div>
+    <div class="border-bottom white-bg page-heading">
+      <el-form :inline="true">
+        <el-row :gutter="20">
+          <el-col :span="6">
+            <el-form-item label="登录名：">
+              <el-input
+                placeholder="请输入登录名"
+                v-model="loginName"
+                clearable
+              ></el-input>
+            </el-form-item>
+          </el-col>
+          <el-col :span="6" class="alignRight">
+            <el-form-item label="姓名：">
+              <el-input
+                placeholder="请输入用户姓名"
+                v-model="userName"
+                clearable
+              ></el-input>
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-button type="primary">查询</el-button>
+            <el-button type="primary" @click="showUserAddModal()"
+              >新增</el-button
+            >
+          </el-col>
+        </el-row>
+      </el-form>
     </div>
+    <div>
+      <el-table
+        :data="getTableData()"
+        border
+        stripe
+        :highlight-current-row="true"
+        row-key="id"
+        class="table-width"
+      >
+        <el-table-column fixed prop="loginName" label="登录名" min-width="15%">
+        </el-table-column>
+        <el-table-column prop="name" label="姓名" min-width="15%">
+        </el-table-column>
+        <el-table-column prop="organizations.name" label="部门" min-width="25%">
+        </el-table-column>
+        <el-table-column prop="roles.Name" label="角色" min-width="25%">
+        </el-table-column>
+        <el-table-column fixed="right" label="操作" min-width="20%">
+          <template slot-scope="scope">
+            <el-button @click="handleEdit(scope.row)" type="text" size="small"
+              >修改</el-button
+            >
+            <el-button type="text" size="small">删除</el-button>
+          </template>
+        </el-table-column>
+      </el-table>
+    </div>
+    <el-dialog
+      title="新增用户"
+      width="30%"
+      :visible.sync="addModalShow"
+      :close-on-click-modal="false"
+    >
+      <el-form :rules="userRules" :model="addForm" ref="addForm">
+        <el-form-item label="登录名：" prop="loginName">
+          <el-input
+            placeholder="请输入登录名"
+            v-model="addForm.loginName"
+            clearable
+          ></el-input>
+        </el-form-item>
+
+        <el-form-item label="密码：" prop="passwd">
+          <el-input
+            type="password"
+            placeholder="请输入密码"
+            v-model="addForm.passwd"
+            clearable
+          ></el-input>
+        </el-form-item>
+
+        <el-form-item label="确认密码：" prop="userConfirmedPassword">
+          <el-input
+            type="password"
+            placeholder="请输入确认密码"
+            v-model="addForm.userConfirmedPassword"
+            clearable
+          ></el-input>
+        </el-form-item>
+
+        <el-form-item label="姓名：" prop="name">
+          <el-input
+            placeholder="请输入用户姓名"
+            v-model="addForm.name"
+            clearable
+          >
+          </el-input>
+        </el-form-item>
+
+        <el-form-item label="部门：">
+          <el-input
+            placeholder="请选择部门"
+            v-model="addForm.userDept"
+            :readonly="true"
+          >
+            <template slot="append">
+              <el-button size="small">选择</el-button>
+            </template>
+          </el-input>
+        </el-form-item>
+        <el-form-item label="角色：">
+          <el-input
+            placeholder="请选择角色"
+            v-model="addForm.userRoles"
+            :readonly="true"
+          >
+            <template slot="append">
+              <el-button
+                size="small"
+                @click="roleSelectModalShow = !roleSelectModalShow"
+                >选择</el-button
+              >
+            </template>
+          </el-input>
+        </el-form-item>
+      </el-form>
+
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="addModalShow = false">取 消</el-button>
+        <el-button type="primary" @click="submitAddForm('addForm')"
+          >保存</el-button
+        >
+      </div>
+    </el-dialog>
+    <RoleSelect
+      :is-show="roleSelectModalShow"
+      :default-selected="selectedRoles.map(role => role['id'])"
+      @selected-roles="onSelectedRoles"
+    ></RoleSelect>
+  </div>
 </template>
 
 <script>
@@ -252,5 +266,4 @@ export default {
 }
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

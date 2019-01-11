@@ -67,7 +67,7 @@ module.exports = {
     proxy: {
       '/rest': {
         target: 'http://localhost',
-        changeOrigin: true,
+        changeOrigin: true
         // pathRewrite: { '^/api': '' }
       }
     }

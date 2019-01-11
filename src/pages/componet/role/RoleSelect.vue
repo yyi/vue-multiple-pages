@@ -1,27 +1,38 @@
 <template>
-    <el-dialog
-            width="30%"
-            title="选择角色"
-            :close-on-click-modal="false"
-            :visible.sync="showDialog"
-            @open="showSelectedRoles"
-            append-to-body>
+  <el-dialog
+    width="30%"
+    title="选择角色"
+    :close-on-click-modal="false"
+    :visible.sync="showDialog"
+    @open="showSelectedRoles"
+    append-to-body
+  >
+    <el-table
+      border
+      stripe
+      class="table-width"
+      @row-click="clickRow"
+      ref="rolesTable"
+      :data="rolesData"
+      @selection-change="handleRolesSelectionChange"
+    >
+      <el-table-column type="selection" min-width="10%"> </el-table-column>
+      <el-table-column prop="name" label="名称" min-width="40%">
+      </el-table-column>
+      <el-table-column
+        prop="description"
+        label="描述"
+        min-width="40%"
+        show-overflow-tooltip
+      >
+      </el-table-column>
+    </el-table>
 
-        <el-table border stripe class="table-width" @row-click="clickRow" ref="rolesTable" :data="rolesData"
-                  @selection-change="handleRolesSelectionChange">
-            <el-table-column type="selection" min-width="10%">
-            </el-table-column>
-            <el-table-column prop="name" label="名称" min-width="40%">
-            </el-table-column>
-            <el-table-column prop="description" label="描述" min-width="40%" show-overflow-tooltip>
-            </el-table-column>
-        </el-table>
-
-        <div slot="footer" class="dialog-footer">
-            <el-button @click="showDialog = false">取 消</el-button>
-            <el-button type="primary" @click="confirm()">确认</el-button>
-        </div>
-    </el-dialog>
+    <div slot="footer" class="dialog-footer">
+      <el-button @click="showDialog = false">取 消</el-button>
+      <el-button type="primary" @click="confirm()">确认</el-button>
+    </div>
+  </el-dialog>
 </template>
 
 <script>
@@ -81,5 +92,4 @@ export default {
 }
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
