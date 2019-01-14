@@ -129,16 +129,18 @@
 
       <div slot="footer" class="dialog-footer">
         <el-button @click="addModalShow = false">取 消</el-button>
-        <el-button type="primary" @click="submitAddForm('addForm')"
-          >保存</el-button
-        >
+
+        <el-button type="primary" @click="submitAddForm('addForm')">
+          保存
+        </el-button>
       </div>
     </el-dialog>
     <RoleSelect
       :is-show="roleSelectModalShow"
       :default-selected="selectedRoles.map(role => role['id'])"
       @selected-roles="onSelectedRoles"
-    ></RoleSelect>
+    >
+    </RoleSelect>
   </div>
 </template>
 

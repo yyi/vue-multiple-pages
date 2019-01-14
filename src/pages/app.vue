@@ -20,12 +20,12 @@
           </a>
         </li>
       </ul>
-      <el-button type="primary" @click="gogogo"
-        >To Customer Home Page</el-button
-      >
-      <el-button type="primary" plain @click="tototo"
-        >To User Login Page</el-button
-      >
+      <el-button type="primary" @click="gogogo">
+        To Customer Home Page
+      </el-button>
+      <el-button type="primary" plain @click="tototo">
+        To User Login Page
+      </el-button>
       <el-button type="primary" plain @click="gotoshop">go to shop</el-button>
       <el-button type="primary" plain @click="gotouser">go to user</el-button>
     </el-card>
