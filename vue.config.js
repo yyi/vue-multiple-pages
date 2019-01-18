@@ -53,6 +53,7 @@ module.exports = {
   css: {
     modules: false
   },
+  productionSourceMap: false,
   chainWebpack: config => {
     config.plugin('define').tap(args => {
       args[0] = {

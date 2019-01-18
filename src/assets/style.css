@@ -6914,8 +6914,19 @@ body.skin-3 {
     }
 }
 
+
+
+
+
 .el-form--inline .el-form-item {
     margin-bottom: 2px;
+}
+
+.el-form-item {
+    margin-bottom: 18px;
+}
+.el-dialog__body {
+    padding: 20px;
 }
 
 .table-width {

@@ -23,11 +23,12 @@ const defaultConfig = {
     console.log(vue)
     if (vue) {
       let msg = error?.response?.data?.code
-        ? `,错误码:[${error.response.data.code}],错误描述[${
+        ? `错误码:[${error.response.data.code}],错误描述:[[${
             error.response.data.message
           }].`
-        : `,[${error.message}].`
-      vue.$alert(`系统开小差${msg}`, '提示', {
+        : `[${error.message}].`
+      msg = msg || '系统开小差.'
+      vue.$alert(`${msg}`, '错误', {
         type: 'error'
       })
     }

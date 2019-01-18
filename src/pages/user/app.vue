@@ -23,9 +23,9 @@
           </el-col>
           <el-col :span="12">
             <el-button type="primary">查询</el-button>
-            <el-button type="primary" @click="showUserAddModal()"
-              >新增</el-button
-            >
+            <el-button type="primary" @click="showUserAddModal()">
+              新增
+            </el-button>
           </el-col>
         </el-row>
       </el-form>
@@ -49,9 +49,9 @@
         </el-table-column>
         <el-table-column fixed="right" label="操作" min-width="20%">
           <template slot-scope="scope">
-            <el-button @click="handleEdit(scope.row)" type="text" size="small"
-              >修改</el-button
-            >
+            <el-button @click="handleEdit(scope.row)" type="text" size="small">
+              修改
+            </el-button>
             <el-button type="text" size="small">删除</el-button>
           </template>
         </el-table-column>
@@ -60,73 +60,76 @@
     <el-dialog
       title="新增用户"
       width="50%"
+      top="20px"
       :visible.sync="addModalShow"
       :close-on-click-modal="false"
     >
-      <el-form :rules="userRules" :model="addForm" ref="addForm">
-        <el-form-item label="登录名：" prop="loginName">
-          <el-input
-            placeholder="请输入登录名"
-            v-model="addForm.loginName"
-            clearable
-          ></el-input>
-        </el-form-item>
+      <div class="modal-height">
+        <el-form :rules="userRules" :model="addForm" ref="addForm">
+          <el-form-item label="登录名：" prop="loginName">
+            <el-input
+              placeholder="请输入登录名"
+              v-model="addForm.loginName"
+              clearable
+            ></el-input>
+          </el-form-item>
 
-        <el-form-item label="密码：" prop="passwd">
-          <el-input
-            type="password"
-            placeholder="请输入密码"
-            v-model="addForm.passwd"
-            clearable
-          ></el-input>
-        </el-form-item>
+          <el-form-item label="密码：" prop="passwd">
+            <el-input
+              type="password"
+              placeholder="请输入密码"
+              v-model="addForm.passwd"
+              clearable
+            ></el-input>
+          </el-form-item>
 
-        <el-form-item label="确认密码：" prop="userConfirmedPassword">
-          <el-input
-            type="password"
-            placeholder="请输入确认密码"
-            v-model="addForm.userConfirmedPassword"
-            clearable
-          ></el-input>
-        </el-form-item>
+          <el-form-item label="确认密码：" prop="userConfirmedPassword">
+            <el-input
+              type="password"
+              placeholder="请输入确认密码"
+              v-model="addForm.userConfirmedPassword"
+              clearable
+            ></el-input>
+          </el-form-item>
 
-        <el-form-item label="姓名：" prop="name">
-          <el-input
-            placeholder="请输入用户姓名"
-            v-model="addForm.name"
-            clearable
-          >
-          </el-input>
-        </el-form-item>
+          <el-form-item label="姓名：" prop="name">
+            <el-input
+              placeholder="请输入用户姓名"
+              v-model="addForm.name"
+              clearable
+            >
+            </el-input>
+          </el-form-item>
 
-        <el-form-item label="部门：">
-          <el-input
-            placeholder="请选择部门"
-            v-model="addForm.userDept"
-            :readonly="true"
-          >
-            <template slot="append">
-              <el-button size="small">选择</el-button>
-            </template>
-          </el-input>
-        </el-form-item>
-        <el-form-item label="角色：">
-          <el-input
-            placeholder="请选择角色"
-            v-model="addForm.userRoles"
-            :readonly="true"
-          >
-            <template slot="append">
-              <el-button
-                size="small"
-                @click="roleSelectModalShow = !roleSelectModalShow"
-                >选择</el-button
-              >
-            </template>
-          </el-input>
-        </el-form-item>
-      </el-form>
-
+          <el-form-item label="部门：">
+            <el-input
+              placeholder="请选择部门"
+              v-model="addForm.userDept"
+              :readonly="true"
+            >
+              <template slot="append">
+                <el-button size="small">选择</el-button>
+              </template>
+            </el-input>
+          </el-form-item>
+          <el-form-item label="角色：">
+            <el-input
+              placeholder="请选择角色"
+              v-model="addForm.userRoles"
+              :readonly="true"
+            >
+              <template slot="append">
+                <el-button
+                  size="small"
+                  @click="roleSelectModalShow = !roleSelectModalShow"
+                >
+                  选择
+                </el-button>
+              </template>
+            </el-input>
+          </el-form-item>
+        </el-form>
+      </div>
       <div slot="footer" class="dialog-footer">
         <el-button @click="addModalShow = false">取 消</el-button>
 
@@ -268,4 +271,9 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.modal-height {
+  max-height: 600px;
+  overflow: auto;
+}
+</style>
