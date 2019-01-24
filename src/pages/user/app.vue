@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="page-container">
     <div class="border-bottom white-bg page-heading">
       <el-form :inline="true">
         <el-row :gutter="20">
@@ -30,22 +30,31 @@
         </el-row>
       </el-form>
     </div>
-    <div>
+    <div class="table-container-p75">
       <el-table
-        :data="getTableData()"
+        :data="userData"
         border
         stripe
         :highlight-current-row="true"
         row-key="id"
+        height="100%"
         class="table-width"
       >
         <el-table-column fixed prop="loginName" label="登录名" min-width="15%">
         </el-table-column>
         <el-table-column prop="name" label="姓名" min-width="15%">
         </el-table-column>
-        <el-table-column prop="organizations.name" label="部门" min-width="25%">
+        <el-table-column label="部门" min-width="25%">
+          <template slot-scope="scope">{{
+            scope.row.organizations
+              .map(organization => organization.name)
+              .join(',')
+          }}</template>
         </el-table-column>
-        <el-table-column prop="roles.Name" label="角色" min-width="25%">
+        <el-table-column label="角色" min-width="25%">
+          <template slot-scope="scope">{{
+            scope.row.roles.map(role => role.name).join(',')
+          }}</template>
         </el-table-column>
         <el-table-column fixed="right" label="操作" min-width="20%">
           <template slot-scope="scope">
@@ -57,6 +66,17 @@
         </el-table-column>
       </el-table>
     </div>
+    <el-pagination
+      @size-change="setPageSize"
+      @current-change="setCurrentPage"
+      :current-page="1"
+      :page-sizes="[10, 20, 50, 100]"
+      :page-size="10"
+      layout="total, sizes, prev, pager, next, jumper"
+      :total="total"
+      class="page-pull-right"
+    >
+    </el-pagination>
     <el-dialog
       title="新增用户"
       width="50%"
@@ -149,6 +169,7 @@
 
 <script>
 import RoleSelect from '../componet/role/RoleSelect'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
   components: { RoleSelect },
@@ -173,7 +194,7 @@ export default {
       }
     }
     return {
-      userData: [],
+      // userData: [],
       loginName: '',
       userName: '',
       addModalShow: false,
@@ -212,6 +233,7 @@ export default {
     }
   },
   methods: {
+    ...mapActions(['getUserList', 'setPageSize', 'setCurrentPage']),
     handleEdit(row) {
       console.log(row)
       this.changeSelectedRoles(row['roles'])
@@ -227,10 +249,10 @@ export default {
         return transUser
       })
     },
-    async getUserList() {
-      // $.get(this, '/rest/user/list', res => (this.userData = res['content']))
-      this.userData = (await this.$fetch('/rest/user/list'))['content']
-    },
+    // async getUserList() {
+    //   // $.get(this, '/rest/user/list', res => (this.userData = res['content']))
+    //   this.userData = (await this.$fetch('/rest/user/list'))['content']
+    // },
     onSelectedRoles(roles) {
       console.log('received selected roles')
       console.log(roles)
@@ -264,6 +286,9 @@ export default {
       })
     }
   },
+  computed: {
+    ...mapGetters(['userData', 'total'])
+  },
   mounted() {
     console.log('mounted')
     this.getUserList()
@@ -275,5 +300,18 @@ export default {
 .modal-height {
   max-height: 600px;
   overflow: auto;
+}
+
+.page-container {
+  height: 100%;
+}
+
+.table-container-p75 {
+  height: 75%;
+}
+
+.page-pull-right {
+  float: right;
+  margin-top: 5px;
 }
 </style>
