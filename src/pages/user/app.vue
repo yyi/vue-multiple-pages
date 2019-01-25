@@ -312,6 +312,6 @@ export default {
 
 .page-pull-right {
   float: right;
-  margin-top: 5px;
+  margin-top: 2px;
 }
 </style>
