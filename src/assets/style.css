@@ -6932,3 +6932,11 @@ body.skin-3 {
 .table-width {
     width: 100%;
 }
+
+.el-form-item__label,.el-table,.el-button,.el-form-item__content{
+    font-size:12px;
+}
+
+.el-dialog__title{
+    font-size:16px;
+}

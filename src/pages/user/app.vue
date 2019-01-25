@@ -3,7 +3,7 @@
     <div class="border-bottom white-bg page-heading">
       <el-form :inline="true">
         <el-row :gutter="20">
-          <el-col :span="6">
+          <el-col :span="8">
             <el-form-item label="登录账号：">
               <el-input
                 placeholder="请输入登录名"
@@ -12,7 +12,7 @@
               ></el-input>
             </el-form-item>
           </el-col>
-          <el-col :span="6" class="alignRight">
+          <el-col :span="8" class="alignRight">
             <el-form-item label="姓名：">
               <el-input
                 placeholder="请输入用户姓名"
@@ -21,7 +21,7 @@
               ></el-input>
             </el-form-item>
           </el-col>
-          <el-col :span="12">
+          <el-col :span="8">
             <el-button type="primary">查询</el-button>
             <el-button type="primary" @click="showUserAddModal()">
               新增
@@ -307,7 +307,7 @@ export default {
 }
 
 .table-container-p75 {
-  height: 75%;
+  height: 85%;
 }
 
 .page-pull-right {
