@@ -11,7 +11,7 @@
     "mock": "json-server --watch user.json --routes router.json"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "element-ui": "^2.15.5",
     "vue": "^2.6.14",
