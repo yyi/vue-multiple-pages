@@ -5,13 +5,13 @@ if (process.env.NODE_ENV === 'production') {
 module.exports = {
   presets: [
     [
-      '@vue/app',
+      '@vue/cli-plugin-babel/preset',
       {
         polyfills: [
-          'es6.promise',
+      /*    'es6.promise',
           'es6.symbol',
           'es6.array.iterator',
-          'es7.promise.finally'
+          'es7.promise.finally'*/
         ]
       }
     ]
